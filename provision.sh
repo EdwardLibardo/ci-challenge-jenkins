@@ -30,9 +30,17 @@ sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources
 sudo apt-get update > /dev/null 2>&1
 sudo apt-get -y install jenkins > /dev/null 2>&1
 sudo usermod -aG jenkins docker
-Sudo service Jenkins restart
+sudo service Jenkins restart
 
+
+#########################
+# Chrome driver
 ########################
+sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+sudo echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt-get -y update
+sudo apt-get install -y google-chrome-stable
+	
 # nginx
 ########################
 #echo "installing node"
